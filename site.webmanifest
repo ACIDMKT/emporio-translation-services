@@ -1,0 +1,14 @@
+{
+  "name": "Emporium Translation Services",
+  "short_name": "Emporium",
+  "description": "Traducciones certificadas e interpretación profesional por perito traductor en Cancún, Quintana Roo.",
+  "lang": "es-MX",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#F7F4EE",
+  "theme_color": "#0F4C5C",
+  "icons": [
+    { "src": "img/variante-simbolo.png", "sizes": "1008x1041", "type": "image/png", "purpose": "any" }
+  ]
+}

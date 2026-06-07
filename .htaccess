@@ -1,0 +1,34 @@
+# ===== Emporium — config de despliegue (Apache) =====
+
+# Compresión de texto (Lighthouse: "Enable text compression")
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml \
+    application/javascript application/json application/xml \
+    image/svg+xml application/manifest+json
+</IfModule>
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/css application/javascript application/json image/svg+xml
+</IfModule>
+
+# Cache eficiente (Lighthouse: "Serve static assets with an efficient cache policy")
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/png            "access plus 1 year"
+  ExpiresByType image/webp           "access plus 1 year"
+  ExpiresByType image/svg+xml        "access plus 1 year"
+  ExpiresByType text/css             "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType application/manifest+json "access plus 1 week"
+  ExpiresByType text/html            "access plus 1 day"
+</IfModule>
+<IfModule mod_headers.c>
+  <FilesMatch "\.(png|webp|svg|css|js)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>
+
+# Seguridad básica
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
